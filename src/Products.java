@@ -1,9 +1,9 @@
 public abstract class Products {
 
-    int productID;
-    String name;
-    double basePrice;
-    int stockQuantity;
+    private int productID;
+    private String name;
+    private double basePrice;
+   private int stockQuantity;
 
 
 
@@ -14,7 +14,9 @@ this.basePrice = basePrice;
 this.stockQuantity = stockQuantity;
     }
 
-
+public String getProductInfo(){
+    return "ID: " + productID + " | Name: " + name + " | Price: ₱" + basePrice + " | Stock: " + stockQuantity;
+}
 
 
 
