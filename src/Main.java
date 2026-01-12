@@ -4,6 +4,7 @@ public class Main {
     static Scanner input = new Scanner(System.in);
     static boolean isLoggedIn;
     static UserManager manager = new UserManager();
+    static ShoppingCart cart = new ShoppingCart();
 
     public static void logIn() {
 
@@ -102,60 +103,87 @@ public class Main {
             System.out.println("Menu: ");
             System.out.println("1. Browse Products");
             System.out.println("2. Add Product to Cart");
-            System.out.println("3. Remove Product from Cart");
-            System.out.println("4. View Cart");
+            System.out.println("3. View Cart");
+            System.out.println("4. Remove Product from cart");
             System.out.println("5. Checkout");
             System.out.println("6. View Orders");
             System.out.println("7. Exit");
+            System.out.print("Enter: ");
             choiceM = input.nextInt();
             input.nextLine();
 
 
-            switch(choiceM){
+            switch(choiceM) {
 
                 case 1:
                     System.out.println("=== AVAILABLE PRODUCTS ===");
-                    for(Products i: productsList){
+                    System.out.println(" ");
+                    for (Products i : productsList) {
                         System.out.println(i.getProductInfo());
                     }
+                    System.out.println("==========================");
+                    System.out.println(" ");
                     break;
 
+                case 2:
+                    System.out.println("Enter product name: ");
+                    String productName = input.nextLine();
 
+                    Products selectedProduct = null;
 
+                    for (Products p : productsList) {
+                        if (p.getName().toLowerCase().contains(productName.toLowerCase())) {
+                            selectedProduct = p;
+                            break;
+                        }
+                    }
 
+                    if (selectedProduct == null) {
+                        System.out.println("Product not found!");
+                        break;
+                    }
 
+                    System.out.print("Enter quantity: ");
+                    int quantity = input.nextInt();
+                    input.nextLine();
 
+                    cart.addToCart(selectedProduct, quantity);
+                    System.out.println(quantity + " x " + selectedProduct.getProductInfo() + " has been added to cart!");
+                    break;
 
+                case 3:
+                    cart.viewCart();
+                    break;
 
+                case 4:
+                    System.out.println("Enter product name you want to remove: ");
+                    String removeProduct = input.nextLine();
 
+                    Products rselectedProduct = null;
 
+                    for (Products p : productsList) {
+                        if (p.getName().toLowerCase().contains(removeProduct.toLowerCase())) {
+                            rselectedProduct = p;
+                            break;
+                        }
+                    }
+
+                    if (rselectedProduct == null) {
+                        System.out.println("Product not found!");
+                        break;
+                    }
+
+                    System.out.print("Enter quantity: ");
+                    int quantityR = input.nextInt();
+                    input.nextLine();
+
+                    cart.removeFromCart(rselectedProduct, quantityR);
+                    System.out.println(quantityR + " x " + rselectedProduct.getProductInfo() + " has been removed from the cart!");
+                    break;
 
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         }while(choiceM != 7);
 
     }
 }
-
-
-
-
-
-
-
-
-

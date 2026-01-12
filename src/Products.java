@@ -15,12 +15,16 @@ this.stockQuantity = stockQuantity;
     }
 
 public String getProductInfo(){
-    return "ID: " + productID + " | Name: " + name + " | Price: ₱" + basePrice + " | Stock: " + stockQuantity;
+    return "Product ID: " + productID + " | Name: " + name + " | Price: ₱" + basePrice + " | Stock: " + stockQuantity;
 }
 
+public String getName(){
+        return name;
+}
 
-
-
+public String toString(){
+        return name;
+}
 
 
 
