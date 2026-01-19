@@ -5,6 +5,9 @@ public class Main {
     static boolean isLoggedIn;
     static UserManager manager = new UserManager();
     static ShoppingCart cart = new ShoppingCart();
+static OrderManager ordermanager = new OrderManager();
+
+
 
     public static void logIn() {
 
@@ -44,7 +47,7 @@ public class Main {
 
     public static void main(String[] args) {
        ArrayList<Products> productsList = new ArrayList<>();
-
+       int orderCounter = 1;
 
         productsList.add(new Electronics(10126, "TV", 5000, 50));
         productsList.add(new Electronics(10226, "Laptop", 60000, 50));
@@ -167,20 +170,29 @@ public class Main {
                             break;
                         }
                     }
-
                     if (rselectedProduct == null) {
                         System.out.println("Product not found!");
                         break;
                     }
-
                     System.out.print("Enter quantity: ");
                     int quantityR = input.nextInt();
                     input.nextLine();
-
                     cart.removeFromCart(rselectedProduct, quantityR);
                     System.out.println(quantityR + " x " + rselectedProduct.getProductInfo() + " has been removed from the cart!");
                     break;
 
+                case 5:
+                    ordermanager.placeOrder(cart);
+                    cart.clearCart();
+                     break;
+
+                case 6:
+                    ordermanager.viewOrders();
+                break;
+
+                    default:
+                    System.out.println("Invalid input");
+                    break;
             }
 
         }while(choiceM != 7);
