@@ -129,7 +129,7 @@ static OrderManager ordermanager = new OrderManager();
                     break;
 
                 case 2:
-                    System.out.println("Enter product name: ");
+                    System.out.print("Enter product name: ");
                     String productName = input.nextLine();
 
                     Products selectedProduct = null;
@@ -159,7 +159,7 @@ static OrderManager ordermanager = new OrderManager();
                     break;
 
                 case 4:
-                    System.out.println("Enter product name you want to remove: ");
+                    System.out.print("Enter product name you want to remove: ");
                     String removeProduct = input.nextLine();
 
                     Products rselectedProduct = null;
@@ -182,8 +182,9 @@ static OrderManager ordermanager = new OrderManager();
                     break;
 
                 case 5:
-                    ordermanager.placeOrder(cart);
+                    ordermanager.checkOut(cart);
                     cart.clearCart();
+
                      break;
 
                 case 6:

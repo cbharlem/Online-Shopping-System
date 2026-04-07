@@ -18,6 +18,13 @@ public String getProductInfo(){
     return "Product ID: " + productID + " | Name: " + name + " | Price: ₱" + basePrice + " | Stock: " + stockQuantity;
 }
 
+
+public double getPrice(){
+        return  basePrice;
+}
+
+
+
 public String getName(){
         return name;
 }
